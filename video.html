@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta name="robots" content="noindex,nofollow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Page</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Hiragino Sans", sans-serif;
+      background: #fafafa;
+      color: #333;
+    }
+    header {
+      text-align: center;
+      padding: 20px;
+      font-size: 2rem;
+      font-weight: bold;
+      border-bottom: 1px solid #ddd;
+    }
+    .video-container {
+      display: flex;
+      overflow-x: auto;
+      gap: 20px;
+      padding: 20px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .video-container video {
+      width: 400px;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+    .back-btn {
+      display: block;
+      margin: 30px auto;
+      padding: 12px 24px;
+      background: #333;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      width: 200px;
+      text-align: center;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #666;
+      border-top: 1px solid #ddd;
+      margin-top: 40px;
+    }
+    /* スマホ対応 */
+    @media (max-width: 768px) {
+      header {
+        font-size: 1.5rem;
+      }
+      .video-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .video-container video {
+        width: 90%; /* スマホ幅いっぱい */
+        max-width: 500px;
+      }
+      .back-btn {
+        width: 150px;
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>Video Page</header>
+
+  <section class="video-container">
+    <video controls src="movie/1.mp4"></video>
+    <video controls src="movie/2.mp4"></video>
+    <video controls src="movie/3.mp4"></video>
+    <video controls src="movie/4.mp4"></video>
+  </section>
+
+
+  <a href="index.html" class="back-btn">トップに戻る</a>
+
+  <footer>Family Album © 2025</footer>
+</body>
+</html>
+

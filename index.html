@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta name="robots" content="noindex,nofollow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Family Album</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Hiragino Sans", sans-serif;
+      background: #fafafa;
+      color: #333;
+      overflow-x: hidden;
+    }
+    header {
+      text-align: center;
+      padding: 20px;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    /* フルスクリーンスライド */
+    .slider {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .slides {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+    .slides img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 2s;
+    }
+    .slides img.active {
+      opacity: 1;
+    }
+    /* キャッチコピー */
+    .catchcopy {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      font-size: 2.5rem;
+      text-align: center;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+      width: 90%;
+      max-width: 800px;
+    }
+
+    /* ボタンセクション */
+    .content-section {
+      padding: 80px 20px;
+      text-align: center;
+      background: #fff;
+    }
+    .message {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+      line-height: 1.6;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s;
+    }
+    .message.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s;
+    }
+    .btn-group.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .btn-group a {
+      padding: 14px 28px;
+      background: #333;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      transition: background 0.3s, transform 0.2s;
+      min-width: 180px;
+      text-align: center;
+    }
+    .btn-group a:hover {
+      background: #555;
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 40px;
+    }
+
+    /* スマホ用 */
+    @media (max-width: 768px) {
+      .catchcopy { font-size: 1.8rem; }
+      .btn-group { flex-direction: column; gap: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <header>Family Album</header>
+
+  <!-- フルスクリーンスライド -->
+<section class="slider">
+    <div class="slides">
+      <img src="top-image/LINE_ALBUM_20241015_250916_1.webp" alt="思い出1">
+      <img src="top-image/LINE_ALBUM_20241015_250916_2.webp" alt="思い出2">
+      <img src="top-image/LINE_ALBUM_20241015_250916_3.webp" alt="思い出3">
+      <img src="top-image/LINE_ALBUM_20241015_250916_4.webp" alt="思い出4">
+      <img src="top-image/LINE_ALBUM_20241015_250916_5.webp" alt="思い出5">
+      <img src="top-image/LINE_ALBUM_20241015_250916_6.webp" alt="思い出6">
+      <img src="top-image/LINE_ALBUM_20241015_250916_7.webp" alt="思い出7">
+      <img src="top-image/LINE_ALBUM_20241015_250916_8.webp" alt="思い出8">
+      <img src="top-image/LINE_ALBUM_20241015_250916_9.webp" alt="思い出9">
+      <img src="top-image/LINE_ALBUM_20241015_250916_10.webp" alt="思い出10">
+      <img src="top-image/LINE_ALBUM_20241015_250916_11.webp" alt="思い出11">
+      <img src="top-image/LINE_ALBUM_20241015_250916_12.webp" alt="思い出12">
+      <img src="top-image/LINE_ALBUM_20241015_250916_13.webp" alt="思い出13">
+      <img src="top-image/LINE_ALBUM_20241015_250916_14.webp" alt="思い出14">
+      <img src="top-image/LINE_ALBUM_20241015_250916_15.webp" alt="思い出15">
+      <img src="top-image/LINE_ALBUM_20241015_250916_16.webp" alt="思い出16">
+      <img src="top-image/LINE_ALBUM_20241015_250916_17.webp" alt="思い出17">
+      <img src="top-image/LINE_ALBUM_20241015_250916_18.webp" alt="思い出18">
+      <img src="top-image/LINE_ALBUM_20241015_250916_19.webp" alt="思い出19">
+      <img src="top-image/LINE_ALBUM_20241015_250916_20.webp" alt="思い出20">
+      <img src="top-image/LINE_ALBUM_20241015_250916_21.webp" alt="思い出21">
+      <img src="top-image/LINE_ALBUM_20241015_250916_22.webp" alt="思い出22">
+      <img src="top-image/LINE_ALBUM_20241015_250916_23.webp" alt="思い出23">
+      <img src="top-image/LINE_ALBUM_20241015_250916_24.webp" alt="思い出24">
+      <img src="top-image/LINE_ALBUM_20241015_250916_25.webp" alt="思い出25">
+      <img src="top-image/LINE_ALBUM_20241015_250916_26.webp" alt="思い出26">
+      <img src="top-image/LINE_ALBUM_20241015_250916_27.webp" alt="思い出27">
+      <img src="top-image/LINE_ALBUM_20241015_250916_28.webp" alt="思い出28">
+      <img src="top-image/LINE_ALBUM_20241015_250916_29.webp" alt="思い出29">
+      <img src="top-image/LINE_ALBUM_20241015_250916_30.webp" alt="思い出30">
+      <img src="top-image/LINE_ALBUM_20241015_250916_31.webp" alt="思い出31">
+      <img src="top-image/LINE_ALBUM_20241015_250916_32.webp" alt="思い出32">
+      <img src="top-image/LINE_ALBUM_20241015_250916_33.webp" alt="思い出33">
+      <img src="top-image/LINE_ALBUM_20241015_250916_34.webp" alt="思い出34">
+      <img src="top-image/LINE_ALBUM_20241015_250916_35.webp" alt="思い出35">
+      
+    </div>
+    <div class="catchcopy">「思い出を一緒にめぐる旅を始めよう」</div>
+  </section>
+
+  <!-- ボタンとメッセージ -->
+  <section class="content-section">
+    <div class="message">このアルバムで、<br>写真や動画でいつでも振り返れるように。</div>
+    <div class="btn-group">
+      <a href="album.html">アルバムを見る</a>
+      <a href="video.html">動画を見る</a>
+    </div>
+  </section>
+
+  <footer>Family Album © 2025</footer>
+
+  <script>
+    // スライドショー（フェード）
+    const slides = document.querySelectorAll('.slides img');
+    let current = 0;
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 5000);
+
+    // スクロール時アニメーション
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    });
+    document.querySelectorAll('.message, .btn-group').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

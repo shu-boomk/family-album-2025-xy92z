@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta name="robots" content="noindex,nofollow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Album Page</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Hiragino Sans", sans-serif;
+      background: #fafafa;
+      color: #333;
+    }
+    header {
+      text-align: center;
+      padding: 20px;
+      font-size: 2rem;
+      font-weight: bold;
+      border-bottom: 1px solid #ddd;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .gallery img {
+      width: 100%;
+      height: 250px;          /* 高さ揃え */
+      object-fit: cover;      /* トリミング */
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    .back-btn {
+      display: block;
+      margin: 30px auto;
+      padding: 12px 24px;
+      background: #333;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      width: 200px;
+      text-align: center;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #666;
+      border-top: 1px solid #ddd;
+      margin-top: 40px;
+    }
+    /* 拡大モーダル */
+    .modal {
+      display: none; /* 初期は非表示 */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .modal img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    }
+    .modal.show {
+      display: flex;
+    }
+    /* スマホ対応 */
+    @media (max-width: 768px) {
+      header { font-size: 1.5rem; }
+      .gallery { grid-template-columns: 1fr 1fr; }
+      .back-btn {
+        width: 150px;
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .gallery { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>Album Page</header>
+
+  <section class="gallery" id="album_gallery"></section>
+
+  <a href="index.html" class="back-btn">トップに戻る</a>
+
+  <footer>Family Album © 2025</footer>
+
+  <!-- モーダル -->
+  <div class="modal" id="modal">
+    <img id="modal_img" src="" alt="拡大画像">
+  </div>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const container = document.getElementById("album_gallery");
+    const modal = document.getElementById("modal");
+    const modalImg = document.getElementById("modal_img");
+
+    // フォルダごとに最大枚数を指定
+    const folders = [
+      { name: "image-part1", count: 100 },
+      { name: "image-part2", count: 100 },
+      { name: "image-part3", count: 100 }
+    ];
+
+    folders.forEach(folder => {
+      for (let i = 1; i <= folder.count; i++) {
+        const img = document.createElement("img");
+        img.src = `${folder.name}/a${i}.webp`;
+        img.alt = `思い出 ${i}`;
+        img.loading = "lazy";
+        img.onerror = () => img.remove(); // 無い画像は消す
+
+        // クリックでモーダルに表示
+        img.addEventListener("click", () => {
+          modal.classList.add("show");
+          modalImg.src = img.src;
+          modalImg.alt = img.alt;
+        });
+
+        container.appendChild(img);
+      }
+    });
+
+    // モーダルをクリックで閉じる
+    modal.addEventListener("click", () => {
+      modal.classList.remove("show");
+      modalImg.src = "";
+    });
+  });
+</script>
+
+
+</body>
+</html>
