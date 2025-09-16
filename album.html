@@ -108,44 +108,45 @@
     <img id="modal_img" src="" alt="拡大画像">
   </div>
 
-  <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const container = document.getElementById("album_gallery");
-    const modal = document.getElementById("modal");
-    const modalImg = document.getElementById("modal_img");
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.getElementById("album_gallery");
+  const modal = document.getElementById("modal");
+  const modalImg = document.getElementById("modal_img");
 
-    // フォルダごとに最大枚数を指定
-    const folders = [
-      { name: "image-part1", count: 100 },
-      { name: "image-part2", count: 100 },
-      { name: "image-part3", count: 100 }
-    ];
+  // 各フォルダの開始番号と枚数を指定
+  const folders = [
+    { name: "image-part1", start: 1,   count: 100 },
+    { name: "image-part2", start: 101, count: 100 },
+    { name: "image-part3", start: 201, count: 100 },
+    { name: "image-part4", start: 301, count: 100 }
+  ];
 
-    folders.forEach(folder => {
-      for (let i = 1; i <= folder.count; i++) {
-        const img = document.createElement("img");
-        img.src = `${folder.name}/a${i}.webp`;
-        img.alt = `思い出 ${i}`;
-        img.loading = "lazy";
-        img.onerror = () => img.remove(); // 無い画像は消す
+  folders.forEach(folder => {
+    for (let i = folder.start; i < folder.start + folder.count; i++) {
+      const img = document.createElement("img");
+      img.src = `${folder.name}/a${i}.webp`;
+      img.alt = `思い出 ${i}`;
+      img.loading = "lazy";
+      img.onerror = () => img.remove();
 
-        // クリックでモーダルに表示
-        img.addEventListener("click", () => {
-          modal.classList.add("show");
-          modalImg.src = img.src;
-          modalImg.alt = img.alt;
-        });
+      // モーダル拡大
+      img.addEventListener("click", () => {
+        modal.classList.add("show");
+        modalImg.src = img.src;
+        modalImg.alt = img.alt;
+      });
 
-        container.appendChild(img);
-      }
-    });
-
-    // モーダルをクリックで閉じる
-    modal.addEventListener("click", () => {
-      modal.classList.remove("show");
-      modalImg.src = "";
-    });
+      container.appendChild(img);
+    }
   });
+
+  // モーダルをクリックで閉じる
+  modal.addEventListener("click", () => {
+    modal.classList.remove("show");
+    modalImg.src = "";
+  });
+});
 </script>
 
 
